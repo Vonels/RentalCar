@@ -1,0 +1,25 @@
+.header {
+  height: 68px;
+  background-color: #f2f4f7;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.heder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 120px;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.link {
+  text-decoration: none;
+  color: #101828;
+  &:hover {
+    color: blue;
+  }
+}

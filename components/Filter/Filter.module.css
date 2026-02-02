@@ -1,0 +1,75 @@
+.wrapper {
+  display: flex;
+  justify-content: center; /* 🔥 ВАЖНО */
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+/* ===== FIELD ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8a8a89;
+}
+
+/* ===== SELECT & INPUT ===== */
+.field select,
+.range input {
+  height: 48px;
+  min-width: 180px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: none;
+  background: #f7f7fb;
+  font-size: 16px;
+  color: #121417;
+  outline: none;
+}
+
+.field select {
+  appearance: none;
+  background-image: url("/icons/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== MILEAGE RANGE ===== */
+.range {
+  display: flex;
+}
+
+.range input {
+  width: 120px;
+}
+
+.range input:first-child {
+  border-radius: 14px 0 0 14px;
+}
+
+.range input:last-child {
+  border-radius: 0 14px 14px 0;
+  border-left: 1px solid #e5e5e5;
+}
+
+/* ===== SEARCH BUTTON ===== */
+.searchBtn {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 14px;
+  border: none;
+  background: #3470ff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
