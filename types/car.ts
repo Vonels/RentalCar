@@ -25,7 +25,7 @@ export interface Car {
 
 export interface Filters {
   brand?: string;
-  rentalPrice_lte?: number;
-  mileage_gte?: number;
-  mileage_lte?: number;
+  rentalPrice?: number;
+  minMileage?: number;
+  maxMileage?: number;
 }

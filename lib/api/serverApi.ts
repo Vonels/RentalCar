@@ -21,14 +21,11 @@ export interface CarsResponse {
 
 // 👉 ОСНОВНОЙ ЗАПРОС С ФИЛЬТРАЦИЕЙ (бекенд)
 export const fetchCars = async (params: FetchCarsParams): Promise<Car[]> => {
-  const { page, limit, rentalPrice_lte, ...rest } = params;
+  console.log("FETCH PARAMS:", params);
+  const { page, limit, ...rest } = params;
 
   const query = Object.fromEntries(
-    Object.entries({
-      ...rest,
-      rentalPrice_lte:
-        rentalPrice_lte !== undefined ? `$${rentalPrice_lte}` : undefined,
-    }).filter(([, value]) => value !== undefined),
+    Object.entries(rest).filter(([, v]) => v !== undefined),
   );
 
   const { data } = await api.get<CarsResponse>("/cars", {
@@ -46,7 +43,21 @@ export const fetchCarById = async (id: string): Promise<Car> => {
 
 // 👉 СПРАВОЧНЫЕ ДАННЫЕ (БРЕНДЫ) — НЕ ФИЛЬТРАЦИЯ
 export const fetchBrands = async (): Promise<string[]> => {
-  const { data } = await api.get<Car[]>("/cars");
+  const { data } = await api.get<string[]>("/brands");
+  return data;
+};
 
-  return Array.from(new Set(data.map((car) => car.brand))).sort();
+export const fetchPrices = async (): Promise<number[]> => {
+  const { data } = await api.get<CarsResponse>("/cars", {
+    params: {
+      page: 1,
+      limit: 1000,
+    },
+  });
+
+  const prices = data.cars
+    .map((car) => Number(car.rentalPrice.replace("$", "")))
+    .filter((price) => !Number.isNaN(price));
+
+  return Array.from(new Set(prices)).sort((a, b) => a - b);
 };

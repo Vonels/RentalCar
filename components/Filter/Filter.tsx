@@ -15,6 +15,7 @@ function CustomSelect<T>({
   options,
   value,
   onChange,
+  onClear,
   formatValue,
 }: {
   label?: string;
@@ -22,6 +23,7 @@ function CustomSelect<T>({
   options: Option<T>[];
   value: Option<T> | null;
   onChange: (opt: Option<T>) => void;
+  onClear?: () => void;
   formatValue?: (opt: Option<T>) => string;
 }) {
   const [open, setOpen] = useState(false);
@@ -35,6 +37,7 @@ function CustomSelect<T>({
         className={css.select}
         onClick={() => setOpen((p) => !p)}
       >
+        {/* VALUE */}
         <span className={css.value}>
           {value
             ? formatValue
@@ -42,14 +45,30 @@ function CustomSelect<T>({
               : value.label
             : placeholder}
         </span>
-        <svg
-          width={16}
-          height={16}
-          className={`${css.chevron} ${open ? css.open : ""}`}
-          aria-hidden
-        >
-          <use href="/svg-icons.svg#Up" />
-        </svg>
+
+        {/* ICONS (FIXED) */}
+        <span className={css.icons}>
+          {value && onClear && (
+            <span
+              className={css.clear}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClear();
+              }}
+            >
+              ✕
+            </span>
+          )}
+
+          <svg
+            width={16}
+            height={16}
+            className={`${css.chevron} ${open ? css.open : ""}`}
+            aria-hidden
+          >
+            <use href="/svg-icons.svg#Up" />
+          </svg>
+        </span>
       </button>
 
       {open && (
@@ -73,12 +92,17 @@ function CustomSelect<T>({
 
 export default function Filters() {
   const setFilters = useCarStore((s) => s.setFilters);
+
   const brands = useCarStore((s) => s.brands);
+  const prices = useCarStore((s) => s.prices);
+
   const getBrands = useCarStore((s) => s.getBrands);
+  const getPrices = useCarStore((s) => s.getPrices);
 
   useEffect(() => {
     getBrands();
-  }, [getBrands]);
+    getPrices();
+  }, [getBrands, getPrices]);
 
   const [brand, setBrand] = useState<Option<string> | null>(null);
   const [price, setPrice] = useState<Option<number> | null>(null);
@@ -92,29 +116,35 @@ export default function Filters() {
     label: b,
   }));
 
-  const priceOptions: Option<number>[] = [
-    { value: 20, label: "To $20" },
-    { value: 30, label: "To $30" },
-    { value: 40, label: "To $40" },
-    { value: 50, label: "To $50" },
-  ];
-
-  const mileageOptions: Option<number>[] = Array.from(
-    { length: 21 },
-    (_, i) => {
-      const value = i * 5000;
-      return { value, label: value.toLocaleString() };
-    },
-  );
-
-  /* ===== HANDLER ===== */
+  const priceOptions: Option<number>[] = prices.map((p) => ({
+    value: p,
+    label: String(p), // ✅ только число
+  }));
 
   const handleSearch = () => {
+    console.log("PRICE OPTION:", price);
+    const mileageFrom = from?.value;
+    const mileageTo = to?.value;
+
+    const normalizedFrom =
+      mileageFrom !== undefined &&
+      mileageTo !== undefined &&
+      mileageFrom > mileageTo
+        ? mileageTo
+        : mileageFrom;
+
+    const normalizedTo =
+      mileageFrom !== undefined &&
+      mileageTo !== undefined &&
+      mileageFrom > mileageTo
+        ? mileageFrom
+        : mileageTo;
+
     setFilters({
       brand: brand?.value,
-      rentalPrice_lte: price?.value,
-      mileage_gte: from?.value,
-      mileage_lte: to?.value,
+      rentalPrice: price?.value,
+      minMileage: normalizedFrom,
+      maxMileage: normalizedTo,
     });
   };
 
@@ -126,6 +156,10 @@ export default function Filters() {
         options={brandOptions}
         value={brand}
         onChange={setBrand}
+        onClear={() => {
+          setBrand(null);
+          setFilters({ brand: undefined });
+        }}
       />
 
       <CustomSelect
@@ -134,24 +168,72 @@ export default function Filters() {
         options={priceOptions}
         value={price}
         onChange={setPrice}
+        onClear={() => {
+          setPrice(null);
+          setFilters({ rentalPrice: undefined });
+        }}
         formatValue={(o) => `To $${o.value}`}
       />
 
-      <div className={css.mileageBlock}>
-        <label>Car mileage / km</label>
-        <div className={css.mileageGroup}>
-          <CustomSelect
+      <div className={css.mileageGroup}>
+        {/* FROM */}
+        <div className={css.mileageInputWrapper}>
+          <input
+            className={css.mileageInput}
             placeholder="From"
-            options={mileageOptions}
-            value={from}
-            onChange={setFrom}
+            inputMode="numeric"
+            value={
+              from ? from.value.toLocaleString("en-US").replace(/,/g, " ") : ""
+            }
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              const num = digits ? Number(digits) : undefined;
+
+              setFrom(num ? { value: num, label: String(num) } : null);
+            }}
           />
-          <CustomSelect
+
+          {from && (
+            <span
+              className={css.clear}
+              onClick={() => {
+                setFrom(null);
+                setFilters({ minMileage: undefined });
+              }}
+            >
+              ✕
+            </span>
+          )}
+        </div>
+
+        {/* TO */}
+        <div className={css.mileageInputWrapper}>
+          <input
+            className={css.mileageInput}
             placeholder="To"
-            options={mileageOptions}
-            value={to}
-            onChange={setTo}
+            inputMode="numeric"
+            value={
+              to ? to.value.toLocaleString("en-US").replace(/,/g, " ") : ""
+            }
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              const num = digits ? Number(digits) : undefined;
+
+              setTo(num ? { value: num, label: String(num) } : null);
+            }}
           />
+
+          {to && (
+            <span
+              className={css.clear}
+              onClick={() => {
+                setTo(null);
+                setFilters({ maxMileage: undefined });
+              }}
+            >
+              ✕
+            </span>
+          )}
         </div>
       </div>
 

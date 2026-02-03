@@ -5,6 +5,7 @@ import { useCarStore } from "@/lib/store/carStore";
 import Filters from "@/components/Filter/Filter";
 import CarsList from "@/components/CarList/CarList";
 import css from "./Catalog.module.css";
+import LoadMore from "@/components/LoadMore/LoadMore";
 
 export default function CatalogPage() {
   const { cars, hasMore, loadMore, isLoading, getCars } = useCarStore();
@@ -19,11 +20,7 @@ export default function CatalogPage() {
         <Filters />
         <CarsList cars={cars} />
 
-        {hasMore && (
-          <button onClick={loadMore} disabled={isLoading}>
-            Load more
-          </button>
-        )}
+        {hasMore && <LoadMore onClick={loadMore} />}
 
         {isLoading && <p>Loading...</p>}
       </div>
