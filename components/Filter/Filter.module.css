@@ -1,75 +1,142 @@
 .wrapper {
   display: flex;
-  justify-content: center; /* 🔥 ВАЖНО */
   align-items: flex-end;
-  gap: 18px;
+  gap: 16px;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
-/* ===== FIELD ===== */
-.field {
+.selectWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.field label {
-  font-size: 14px;
-  font-weight: 400;
-  color: #8a8a89;
+.selectWrapper label {
+  font-size: 12px;
+  color: #8d929a;
 }
 
-/* ===== SELECT & INPUT ===== */
-.field select,
-.range input {
-  height: 48px;
-  min-width: 180px;
-  padding: 0 14px;
-  border-radius: 14px;
+.select {
+  width: 204px;
+  height: 44px;
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #f7f7f7;
+  border-radius: 12px;
   border: none;
-  background: #f7f7fb;
-  font-size: 16px;
-  color: #121417;
-  outline: none;
-}
 
-.field select {
-  appearance: none;
-  background-image: url("/icons/chevron-down.svg");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+
   cursor: pointer;
 }
 
-/* ===== MILEAGE RANGE ===== */
-.range {
+.value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  color: #101828;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  z-index: 1000;
+
+  padding: 14px 18px;
+  max-height: 244px;
+  overflow-y: auto;
+
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f7f7f7;
+  box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.02);
+}
+
+.dropdown li {
+  margin-bottom: 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #8d929a;
+
+  cursor: pointer;
+}
+
+.dropdown li:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown li:hover {
+  color: #101828;
+}
+
+.mileageBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mileageGroup {
+  display: flex;
+  align-items: stretch;
+}
+
+.mileageGroup .selectWrapper {
   display: flex;
 }
 
-.range input {
-  width: 120px;
+.mileageGroup .select {
+  width: 160px;
+  height: 44px;
+  border-radius: 0;
 }
 
-.range input:first-child {
-  border-radius: 14px 0 0 14px;
+.mileageGroup .selectWrapper:first-child .select {
+  border-radius: 12px 0 0 12px;
+  border-right: 1px solid #dadde1;
 }
 
-.range input:last-child {
-  border-radius: 0 14px 14px 0;
-  border-left: 1px solid #e5e5e5;
+.mileageGroup .selectWrapper:last-child .select {
+  border-radius: 0 12px 12px 0;
 }
 
-/* ===== SEARCH BUTTON ===== */
 .searchBtn {
-  height: 48px;
-  padding: 0 28px;
-  border-radius: 14px;
-  border: none;
+  height: 44px;
+  padding: 0 24px;
+
   background: #3470ff;
-  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+
   font-size: 16px;
   font-weight: 500;
+  color: #ffffff;
+
   cursor: pointer;
-  transition: background 0.2s ease;
+}
+
+.searchBtn:hover {
+  background: #2f65e3;
 }
