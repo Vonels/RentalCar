@@ -1,6 +1,7 @@
 import { fetchCarById } from "@/lib/api/serverApi";
 import styles from "./CatalogD.module.css";
 import Image from "next/image";
+import CarForm from "@/components/CarForm/CarForm";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -14,7 +15,6 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
     <div className={styles.page}>
       {/* LEFT COLUMN */}
       <div className={styles.left}>
-        {/* IMAGE */}
         <Image
           src={car.img}
           alt={`${car.brand} ${car.model}`}
@@ -24,26 +24,7 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
         />
 
         {/* BOOKING FORM */}
-        <form className={styles.form}>
-          <h3 className={styles.formTitle}>Book your car now</h3>
-          <p className={styles.formSubtitle}>
-            Stay connected! We are always ready to help you.
-          </p>
-
-          <input className={styles.input} placeholder="Name*" required />
-          <input
-            className={styles.input}
-            type="email"
-            placeholder="Email*"
-            required
-          />
-          <input className={styles.input} type="date" />
-          <textarea className={styles.textarea} placeholder="Comment" />
-
-          <button className={styles.button} type="submit">
-            Send
-          </button>
-        </form>
+        <CarForm />
       </div>
 
       {/* RIGHT COLUMN */}

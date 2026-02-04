@@ -1,0 +1,181 @@
+.form {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 32px;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: black;
+}
+
+.formSubtitle {
+  font-size: 14px;
+  color: #8a8a8a;
+  margin-bottom: 24px;
+}
+
+.input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 16px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  border: none;
+  resize: none;
+  margin-bottom: 24px;
+}
+
+.button {
+  margin: 0 auto; /* по центру */
+  margin-top: 24px;
+
+  display: block;
+  min-width: 160px;
+  height: 48px;
+
+  border: none;
+  border-radius: 12px;
+
+  background-color: #3470ff; /* Figma blue */
+  color: #ffffff;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.button:hover {
+  background-color: #265de3;
+}
+
+.button:active {
+  background-color: #1f4fcc;
+}
+
+/* DatePicker */
+.dateWrapper {
+  width: 100%;
+}
+
+/* Mantine input внутри DatePicker */
+.dateWrapper input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.calendar {
+  width: 276px;
+  height: 284px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #3470ff;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* header */
+.header {
+  padding: 10px 0 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #3470ff;
+}
+
+.levelsGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.monthLevel {
+  font-size: 16px;
+  font-weight: 600;
+  color: #101828;
+}
+
+/* arrows */
+.control {
+  color: #3470ff;
+}
+
+/* weekdays */
+.weekdaysRow {
+  margin-bottom: 8px;
+}
+
+.weekday {
+  width: 36px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8d929a;
+}
+
+/* days */
+.week {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.day {
+  width: 41px;
+  height: 32px;
+  border-radius: 32px;
+  font-size: 14px;
+  color: #101828;
+}
+
+.day[data-outside] {
+  color: #8d929a;
+}
+
+.day[data-selected] {
+  background: #3470ff;
+  color: #ffffff;
+}
+
+.day:hover {
+  background: rgba(52, 112, 255, 0.1);
+}
+
+.dateWrapper {
+  position: relative; /* 🔥 КЛЮЧ */
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #0c0d0d;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(12, 13, 13, 0.6);
+  margin-bottom: 24px;
+}

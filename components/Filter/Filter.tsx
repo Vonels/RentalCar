@@ -183,7 +183,7 @@ export default function Filters() {
             placeholder="From"
             inputMode="numeric"
             value={
-              from ? from.value.toLocaleString("en-US").replace(/,/g, " ") : ""
+              from ? from.value.toLocaleString("en-US").replace(/,/g, ",") : ""
             }
             onChange={(e) => {
               const digits = e.target.value.replace(/\D/g, "");
@@ -213,7 +213,7 @@ export default function Filters() {
             placeholder="To"
             inputMode="numeric"
             value={
-              to ? to.value.toLocaleString("en-US").replace(/,/g, " ") : ""
+              to ? to.value.toLocaleString("en-US").replace(/,/g, ",") : ""
             }
             onChange={(e) => {
               const digits = e.target.value.replace(/\D/g, "");

@@ -1,0 +1,161 @@
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.section {
+  margin-right: 12px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  stroke: #3b6cff;
+}
+
+/* ================= POPOVER ================= */
+
+.dropdown {
+  position: absolute;
+  top: 0; /* выровнен по инпуту */
+  left: calc(100% + 12px); /* 👉 сбоку от инпута */
+
+  z-index: 1000;
+
+  width: 300px;
+  background: #ffffff;
+  border: 2px solid #3b6cff;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 24px;
+
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-left: 2px solid #3b6cff;
+  border-bottom: 2px solid #3b6cff;
+
+  transform: rotate(45deg);
+}
+
+/* ================= HEADER ================= */
+
+.calendarHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+
+/* месяц + год */
+.calendarHeaderLevel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  color: #0c0d0d;
+  pointer-events: none;
+  background-color: white;
+}
+
+/* ================= WEEKDAYS ================= */
+
+.weekday {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8f98;
+  padding-bottom: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.weekdaysRow {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+/* 🔥 ЦЕЛЬНАЯ ЛИНИЯ НА ВСЮ ШИРИНУ */
+.weekdaysRow::after {
+  content: "";
+  position: absolute;
+  left: -15px; /* компенсируем padding dropdown */
+  right: -20px;
+  bottom: 2px;
+
+  height: 1px;
+  background-color: #3b6df6;
+}
+/* ================= DAYS ================= */
+
+.day {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #0c0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.day:hover {
+  background: rgba(59, 108, 255, 0.12);
+}
+
+.day[data-selected] {
+  background: #3b6cff;
+  color: #ffffff;
+}
+
+.day[data-outside] {
+  color: #b5b9c0;
+}
+
+/* ================= MONTH / YEAR LISTS ================= */
+
+.month {
+  padding: 0;
+}
+
+.monthsListCell,
+.yearsListCell {
+  border-radius: 8px;
+}
+
+.monthsListControl,
+.yearsListControl {
+  font-weight: 500;
+}
+
+.arrow {
+  font-size: 30px;
+  font-weight: 500;
+  color: #3b6cff;
+  line-height: 1;
+}
+
+/* кнопки стрелок */
+.headerControl {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+}
+
+.headerControl:hover {
+  background: rgba(59, 108, 255, 0.12);
+}

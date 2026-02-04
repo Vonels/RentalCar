@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { MantineProvider } from "@mantine/core";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.variable} ${inter.variable}`}>
         <Header />
-        {children}
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
   );
