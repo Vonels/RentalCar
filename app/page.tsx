@@ -9,8 +9,8 @@ export default function HomePage() {
         <p className={css.herop}>
           Reliable and budget-friendly rentals for any journey
         </p>
-        <Link className={css.link} href="/catalog">
-          <button className={css.herobutton}>View Catalog</button>
+        <Link href="/catalog" className={css.link}>
+          <span className={css.herobutton}>View Catalog</span>
         </Link>
       </div>
     </section>

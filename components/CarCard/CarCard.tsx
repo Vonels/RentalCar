@@ -21,13 +21,34 @@ const Heartinactive = () => (
 );
 
 export default function CarCard({ car }: CarCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
   const [city, country] = car.address.split(", ").slice(-2);
+  const [isFavorite, setIsFavorite] = useState(() => {
+    if (typeof window === "undefined") return false;
+
+    const stored = JSON.parse(
+      localStorage.getItem("favorites") || "[]",
+    ) as string[];
+
+    return stored.includes(car.id);
+  });
 
   const toggleFavorite = () => {
-    setIsFavorite((prev) => !prev);
-  };
+    const stored = JSON.parse(
+      localStorage.getItem("favorites") || "[]",
+    ) as string[];
 
+    let updatedFavorites: string[];
+
+    if (stored.includes(car.id)) {
+      updatedFavorites = stored.filter((id) => id !== car.id);
+      setIsFavorite(false);
+    } else {
+      updatedFavorites = [...stored, car.id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
   return (
     <div className={css.card}>
       <div className={css.imageWrapper}>

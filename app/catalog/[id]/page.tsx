@@ -32,7 +32,9 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
         {/* HEADER */}
         <h1 className={styles.title}>
           {car.brand} {car.model}, {car.year}
-          <span className={styles.id}>id: {car.id}</span>
+          <span className={styles.id}>
+            id: {car.id.slice(0, 4).toUpperCase()}
+          </span>
         </h1>
 
         {/* META */}

@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import { MantineProvider } from "@mantine/core";
+import { Toaster } from "react-hot-toast";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} ${inter.variable}`}>
         <Header />
         <MantineProvider>{children}</MantineProvider>
+        <Toaster />
       </body>
     </html>
   );
