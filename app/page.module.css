@@ -1,6 +1,6 @@
 .hero {
   width: 100%;
-  min-height: 100vh;
+  height: calc(100vh - 68px);
 
   background-image: url("../public/Picture.webp");
   background-repeat: no-repeat;
