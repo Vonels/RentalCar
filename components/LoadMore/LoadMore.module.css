@@ -4,7 +4,6 @@
   margin-top: 64px;
 }
 
-/* КНОПКА */
 .loadMoreButton {
   font-family: var(--font-family);
   font-weight: 600;
@@ -12,13 +11,10 @@
   line-height: 125%;
   height: 44px;
   width: 156px;
-
   color: var(--main);
   background-color: #ffffff;
-
   border: 1px solid var(--button);
   border-radius: 12px;
-
   cursor: pointer;
   transition:
     background-color 0.2s ease,

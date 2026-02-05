@@ -13,7 +13,6 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
 
   return (
     <div className={styles.page}>
-      {/* LEFT COLUMN */}
       <div className={styles.left}>
         <Image
           src={car.img}
@@ -22,14 +21,10 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
           width={640}
           height={512}
         />
-
-        {/* BOOKING FORM */}
         <CarForm />
       </div>
 
-      {/* RIGHT COLUMN */}
       <div className={styles.right}>
-        {/* HEADER */}
         <h1 className={styles.title}>
           {car.brand} {car.model}, {car.year}
           <span className={styles.id}>
@@ -37,7 +32,6 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
           </span>
         </h1>
 
-        {/* META */}
         <div className={styles.meta}>
           <span>
             <svg width={16} height={16}>
@@ -48,10 +42,8 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
           <span>Mileage: {car.mileage.toLocaleString()} km</span>
         </div>
 
-        {/* PRICE */}
         <p className={styles.price}>${car.rentalPrice}</p>
 
-        {/* DESCRIPTION */}
         <p className={styles.description}>{car.description}</p>
 
         <div className={styles.info}>
@@ -69,7 +61,6 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
             </ul>
           </section>
 
-          {/* CAR SPECIFICATIONS */}
           <section className={styles.section}>
             <h3 className={styles.front}>Car Specifications</h3>
             <ul className={styles.list}>
@@ -100,7 +91,6 @@ export default async function CatalogDetailsPage({ params }: PageProps) {
             </ul>
           </section>
 
-          {/* ACCESSORIES & FUNCTIONALITIES */}
           <section className={styles.section}>
             <h3 className={styles.front}>Accessories and functionalities</h3>
             <ul className={styles.list}>

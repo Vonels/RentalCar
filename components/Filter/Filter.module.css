@@ -162,11 +162,9 @@
 /* === COMMON WRAPPER (ONE INPUT LOOK) === */
 .mileageGroup {
   display: flex;
-  align-items: center;
-  height: 48px; /* как select */
-  background: #f7f7f7;
+  background: #f7f7fb;
   border-radius: 12px;
-  overflow: hidden; /* важно для скругления */
+  overflow: hidden;
 }
 
 /* === EACH SIDE === */
@@ -176,17 +174,17 @@
 }
 
 /* === INPUT === */
+
 .mileageInput {
   width: 100%;
-  height: 100%;
-  padding: 0 36px 0 14px;
+  height: 44px;
+  padding-left: 50px;
   border: none;
-  background: transparent; /* 🔥 чтобы был общий фон */
+  background: transparent;
   font-size: 14px;
   color: #121417;
   outline: none;
 }
-
 /* placeholder */
 .mileageInput::placeholder {
   color: #8a8a89;
@@ -210,4 +208,23 @@
 
 .mileageInputWrapper .clear:hover {
   color: #000;
+}
+
+.mileageField {
+  position: relative;
+  width: 150px;
+}
+
+.mileageField:not(:last-child) {
+  border-right: 1px solid #e5e7eb;
+}
+
+.prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: black;
+  pointer-events: none;
 }

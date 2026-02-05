@@ -32,18 +32,15 @@ export default function CarForm() {
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // ⛔️ НЕ обновляем страницу
+    e.preventDefault();
 
-    // простая валидация
     if (!name || !email) {
       toast.error("Please fill in required fields");
       return;
     }
 
-    // ✅ success toast
     toast.success("Form successfully sent 🚗");
 
-    // 🧹 очистка формы
     setName("");
     setEmail("");
     setComment("");
@@ -71,7 +68,6 @@ export default function CarForm() {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      {/* 👇 КАЛЕНДАРЬ */}
       <div className={styles.dateWrapper} ref={wrapperRef}>
         <input
           className={styles.input}
@@ -86,7 +82,6 @@ export default function CarForm() {
             value={date}
             onChange={(d) => {
               setDate(d);
-              setOpen(false);
             }}
           />
         )}

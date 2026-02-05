@@ -1,8 +1,6 @@
 import { api } from "./api";
 import { Car } from "@/types/car";
 
-/* ================== TYPES ================== */
-
 export interface FetchCarsParams {
   brand?: string;
   rentalPrice_lte?: number;
@@ -17,9 +15,6 @@ export interface CarsResponse {
   total: number;
 }
 
-/* ================== API ================== */
-
-// 👉 ОСНОВНОЙ ЗАПРОС С ФИЛЬТРАЦИЕЙ (бекенд)
 export const fetchCars = async (params: FetchCarsParams): Promise<Car[]> => {
   console.log("FETCH PARAMS:", params);
   const { page, limit, ...rest } = params;
@@ -35,13 +30,11 @@ export const fetchCars = async (params: FetchCarsParams): Promise<Car[]> => {
   return data.cars;
 };
 
-// 👉 ПОЛУЧЕНИЕ ОДНОЙ МАШИНЫ
 export const fetchCarById = async (id: string): Promise<Car> => {
   const { data } = await api.get<Car>(`/cars/${id}`);
   return data;
 };
 
-// 👉 СПРАВОЧНЫЕ ДАННЫЕ (БРЕНДЫ) — НЕ ФИЛЬТРАЦИЯ
 export const fetchBrands = async (): Promise<string[]> => {
   const { data } = await api.get<string[]>("/brands");
   return data;

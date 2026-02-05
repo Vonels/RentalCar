@@ -12,7 +12,7 @@ export default function Calendar({ value, onChange }: Props) {
   return (
     <div className={css.dropdown}>
       <DatePicker
-        value={value} // ✅ ИСПОЛЬЗУЕМ value
+        value={value}
         onChange={(val) => onChange(val as Date | null)}
         firstDayOfWeek={1}
         allowDeselect={false}
