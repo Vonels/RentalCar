@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚗 Rental Car — Web Application
 
-## Getting Started
+Web application for searching and booking rental cars.  
+This project was created as a portfolio and learning project for a Junior / Junior+ Fullstack (Frontend-focused) Developer.
 
-First, run the development server:
+---
 
+## 🔗 Demo
+
+- Live Demo: https://your-demo-link.com
+- GitHub Repository: https://github.com/your-username/rental-car
+
+---
+
+## 📖 About the Project
+
+**Rental Car** is a single-page application that allows users to browse and filter rental cars and book a selected vehicle.
+
+The application focuses on clean architecture, working with API data, and building reusable components.
+
+Main goals of the project:
+
+- Practice real-world frontend architecture
+- Work with REST API
+- Apply React and TypeScript in practice
+- Build filters, forms, and modals
+
+---
+
+## ⚙️ Tech Stack
+
+**Frontend**
+
+- React
+- TypeScript
+- Next.js / Vite
+- CSS Modules
+
+**State & Logic**
+
+- React Hooks
+- Controlled components
+- Lifting state up
+
+**Other Tools**
+
+- Axios
+- ESLint
+- Prettier
+- Git / GitHub
+
+---
+
+## ✨ Features
+
+- Fetching data from API
+- Car filtering by brand, price, and mileage
+- Pagination
+- Modal window with car details
+- Booking form
+- Loading and error handling
+
+---
+
+## 🔄 API
+
+The project works with a REST API.
+
+Examples:
+- `GET /cars` — get list of cars
+- `GET /cars/:id` — get car details
+
+All API logic is separated into service files.
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/your-username/rental-car.git

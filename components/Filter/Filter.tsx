@@ -63,7 +63,7 @@ function CustomSelect<T>({
             height={16}
             className={`${css.chevron} ${open ? css.open : ""}`}
           >
-            <use href="/svg-icons.svg#Up" />
+            <use href="/svg-icons.svg#Down" />
           </svg>
         </span>
       </button>

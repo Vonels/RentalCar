@@ -14,10 +14,14 @@ export default function CatalogPage() {
     getCars();
   }, [getCars]);
 
+  const showEmpty = !isLoading && cars.length === 0;
+
   return (
     <section className={css.catalog}>
       <div className={css.inner}>
         <Filters />
+        {showEmpty && <p className={css.empty}>NO CAR</p>}
+
         <CarsList cars={cars} />
 
         {hasMore && <LoadMore onClick={loadMore} />}

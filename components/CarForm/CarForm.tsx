@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Calendar from "../Calendar/Calendar";
-import styles from "./CarForm.module.css";
+import css from "./CarForm.module.css";
 import dayjs from "dayjs";
 import toast from "react-hot-toast";
 
@@ -48,29 +48,29 @@ export default function CarForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h3 className={styles.title}>Book your car now</h3>
-      <p className={styles.subtitle}>
+    <form className={css.form} onSubmit={handleSubmit}>
+      <h3 className={css.title}>Book your car now</h3>
+      <p className={css.subtitle}>
         Stay connected! We are always ready to help you.
       </p>
 
       <input
-        className={styles.input}
+        className={css.input}
         placeholder="Name*"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
 
       <input
-        className={styles.input}
+        className={css.input}
         placeholder="Email*"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <div className={styles.dateWrapper} ref={wrapperRef}>
+      <div className={css.dateWrapper} ref={wrapperRef}>
         <input
-          className={styles.input}
+          className={css.input}
           placeholder="Booking date"
           readOnly
           value={date ? dayjs(date).format("DD/MM/YYYY") : ""}
@@ -88,13 +88,13 @@ export default function CarForm() {
       </div>
 
       <textarea
-        className={styles.textarea}
+        className={css.textarea}
         placeholder="Comment"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
 
-      <button className={styles.button} type="submit">
+      <button className={css.button} type="submit">
         Send
       </button>
     </form>

@@ -6,3 +6,10 @@
   max-width: 1184px;
   margin: 0 auto;
 }
+
+.empty {
+  margin: 40px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #6b7280;
+}

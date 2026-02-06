@@ -100,7 +100,10 @@
 
 .mileageGroup {
   display: flex;
-  align-items: stretch;
+  background: #f7f7f7;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 44px;
 }
 
 .mileageGroup .selectWrapper {
@@ -159,43 +162,40 @@
   color: #8a8a89;
 }
 
-/* === COMMON WRAPPER (ONE INPUT LOOK) === */
 .mileageGroup {
   display: flex;
   background: #f7f7fb;
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
 }
 
-/* === EACH SIDE === */
 .mileageInputWrapper {
   position: relative;
   flex: 1;
 }
 
-/* === INPUT === */
-
 .mileageInput {
-  width: 100%;
-  height: 44px;
-  padding-left: 50px;
+  width: auto;
+  min-width: 60px;
   border: none;
   background: transparent;
-  font-size: 14px;
+
+  font-size: 18px;
+  font-weight: 500;
   color: #121417;
+
   outline: none;
 }
-/* placeholder */
+
 .mileageInput::placeholder {
   color: #8a8a89;
 }
 
-/* === DIVIDER BETWEEN FROM / TO === */
 .mileageInputWrapper:first-child {
   border-right: 1px solid #e0e0e0;
 }
 
-/* === CLEAR (X) === */
 .mileageInputWrapper .clear {
   position: absolute;
   right: 12px;
@@ -211,20 +211,20 @@
 }
 
 .mileageField {
-  position: relative;
-  width: 150px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding-left: 10px;
 }
 
 .mileageField:not(:last-child) {
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid #dadde1;
 }
 
 .prefix {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 16px;
-  color: black;
-  pointer-events: none;
+  font-weight: 500;
+  color: #121417;
 }
