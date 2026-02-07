@@ -7,8 +7,8 @@ This project was created as a portfolio and learning project for a Junior / Juni
 
 ## 🔗 Demo
 
-- Live Demo: https://your-demo-link.com
-- GitHub Repository: https://github.com/your-username/rental-car
+- Live Demo: https://rental-car-six-mu.vercel.app/
+- GitHub Repository: https://github.com/Vonels/RentalCar
 
 ---
 
@@ -67,6 +67,7 @@ Main goals of the project:
 The project works with a REST API.
 
 Examples:
+
 - `GET /cars` — get list of cars
 - `GET /cars/:id` — get car details
 
@@ -77,5 +78,7 @@ All API logic is separated into service files.
 ## 🚀 Getting Started
 
 ### Clone the repository
+
 ```bash
 git clone https://github.com/your-username/rental-car.git
+```
